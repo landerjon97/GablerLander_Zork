@@ -6,17 +6,51 @@
 #include "room.h"
 #include "item.h"
 #include "player.h"
+#include <string>
 
 using namespace std;
 
 
+
+
+
+void gameStart() {
+
+	//where game should run i think
+}
+
+
 int main()
 {
-	cout<< "***********************************************************************************" << endl << "Welcome to GAMENAME. In this game you will use"
-		<< " text to navigate through the level." << endl << "To move you will use the keys N, S, E, W to move a certain compass direction." << endl
+	string start;
+	cout<< "***********************************************************************************" << endl 
+		<< "Welcome to GAMENAME. In this game you will use"
+		<< " text to navigate through the level." << endl 
+		<< "To move you will use the keys N, S, E, W to move a certain compass direction." << endl
 		<< "The other actions you will be able to execute are take, inspect, use, and combine." << endl
 	    << "***********************************************************************************" << endl;
 	cout << "Type start to begin." << endl;
+	while (start != "start" || start != "exit") {
+		
+		try {
+			cin >> start;
+			if (start == "start") {
+				gameStart();
+			}
+			else if (start == "exit") {
+				return 0;
+			}
+			else if (start == "help") {
+				cout << "Your current options are: \n exit: to leave game. \n start: to begin game.\n";
+			}
+			else {
+				cout << "Please type 'start' to begin or 'exit' to leave." << endl;
+			}
+		}
+		catch (exception ex) {
+			cout << "Something went wrong." << endl;
+		}
+	}
 	getchar();
 
 
