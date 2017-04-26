@@ -6,17 +6,16 @@
 #include "room.h"
 #include "item.h"
 #include "player.h"
+#include <vector>
 #include <string>
 
 using namespace std;
 
-
-
-
-
 void gameStart() {
+	string descrip = "You wake up in a mostly dark room. You don't know how you got here. All you can see is a flashlight on the floor shining against the wall.";
+	vector<Room> room(6);
 
-	//where game should run i think
+	room[0].description(descrip);
 }
 
 
