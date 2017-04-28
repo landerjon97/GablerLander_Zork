@@ -10,7 +10,7 @@ void Room::items() {
 
 }
 void Room::description(string pDescrip) {
-	cout << pDescrip;
+	cout << pDescrip << endl;
 }
 void Room::connectedRooms() {
 
