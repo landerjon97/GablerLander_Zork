@@ -4,11 +4,20 @@
 using namespace std;
 class Room {
 private:
+	string info;
+	bool north;
+	bool east;
+	bool south;
+	bool west;
 public:
 	Room();
 	void items();
-	void connectedRooms();
 	void description(string pDescrip);
+	void displayDescription();
+	void doors(bool n, bool e, bool s, bool w);
+	bool testDoor(char pDirection);
+
+
 };
 
 

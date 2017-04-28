@@ -10,8 +10,52 @@ void Room::items() {
 
 }
 void Room::description(string pDescrip) {
-	cout << pDescrip << endl;
-}
-void Room::connectedRooms() {
+	info = pDescrip;
 
+
+}
+void Room::displayDescription() {
+	cout << info << endl;
+}
+
+void Room::doors(bool n, bool e, bool s, bool w) {
+	north = n;
+	east = e;
+	south = s;
+	west = w;
+}
+
+bool Room::testDoor(char pDirection) {
+	if (pDirection == 'n') {
+		if (north == true) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	if (pDirection == 'e') {
+		if (east == true) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	if (pDirection == 's') {
+		if (south == true) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	if (pDirection == 'w') {
+		if (south == true) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
