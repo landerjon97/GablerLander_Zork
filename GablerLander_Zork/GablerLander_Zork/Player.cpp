@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "player.h"
+#include "room.h"
 
 void Player::player()
 {
