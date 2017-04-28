@@ -31,7 +31,7 @@ void Player::userAction(string pUserInput)
 
 }
 
-void Player::north(int* roomsArray, bool moveNorth)
+void Player::north(int* rooms, bool moveNorth)
 {
 	if (moveNorth == true)
 	{
@@ -42,7 +42,7 @@ void Player::north(int* roomsArray, bool moveNorth)
 		cout << "You can't move to the North." << endl;
 	}
 }
-void Player::south(int* roomsArray, bool moveSouth)
+void Player::south(int* rooms, bool moveSouth)
 {
 	if (moveSouth == true)
 	{
@@ -53,7 +53,7 @@ void Player::south(int* roomsArray, bool moveSouth)
 		cout << "You can't move to the South." << endl;
 	}
 }
-void Player::west(int* roomsArray, bool moveWest)
+void Player::west(int* rooms, bool moveWest)
 {
 	if (moveWest == true)
 	{
@@ -64,7 +64,7 @@ void Player::west(int* roomsArray, bool moveWest)
 		cout << "You can't move to the West." << endl;
 	}
 }
-void Player::east(int* roomsArray, bool moveEast)
+void Player::east(int* rooms, bool moveEast)
 {
 	if (moveEast == true)
 	{
