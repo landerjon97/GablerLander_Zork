@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "player.h"
 #include "room.h"
+#include <vector>
 
 
 
@@ -8,8 +9,12 @@ void Player::player()
 {
 
 }
+void Player::setVector(vector<Room> room) {
+	rooms = room;
+}
 void Player::player(string pUserInput)
-{
+{ 
+	
 	string userInput = pUserInput;
 	if (userInput == "h" || userInput == "help" || userInput == "instructions")
 	{
@@ -17,24 +22,27 @@ void Player::player(string pUserInput)
 	}
 	else if (userInput == "n" || userInput == "north" || userInput == "move north" || userInput == "move n")
 	{
-		north(/* Will be passing in room array, and a bool of whether they can move north */);
+		north(rooms[0].testDoor('n'));
 	}
 	else if (userInput == "s" || userInput == "south" || userInput == "move south" || userInput == "move s")
 	{
-		south(/* Will be passing in room array, and a bool of whether they can move south */);
+		south(rooms[0].testDoor('s'));
 	}
 	else if (userInput == "e" || userInput == "east" || userInput == "move east" || userInput == "move e")
 	{
-		east(/* Will be passing in room array, and a bool of whether they can move east */);
+		east(rooms[0].testDoor('e'));
 	}
 	else if (userInput == "w" || userInput == "west" || userInput == "move west" || userInput == "move w")
 	{
-		west(/* Will be passing in room array, and a bool of whether they can move west */);
+		west(rooms[0].testDoor('w'));
+	}
+	else {
+		cout << "Please type 'help' if you are unsure what to do.\n";
 	}
 
 }
 
-void Player::north(int* rooms, bool moveNorth)
+void Player::north(bool moveNorth)
 {
 	if (moveNorth == true)
 	{
@@ -45,7 +53,7 @@ void Player::north(int* rooms, bool moveNorth)
 		cout << "You can't move to the North." << endl;
 	}
 }
-void Player::south(int* rooms, bool moveSouth)
+void Player::south(bool moveSouth)
 {
 	if (moveSouth == true)
 	{
@@ -56,7 +64,7 @@ void Player::south(int* rooms, bool moveSouth)
 		cout << "You can't move to the South." << endl;
 	}
 }
-void Player::west(int* rooms, bool moveWest)
+void Player::west(bool moveWest)
 {
 	if (moveWest == true)
 	{
@@ -67,18 +75,18 @@ void Player::west(int* rooms, bool moveWest)
 		cout << "You can't move to the West." << endl;
 	}
 }
-void Player::east(int* rooms, bool moveEast)
+void Player::east(bool moveEast)
 {
 	if (moveEast == true)
 	{
-		//Move to vector position j+1
+		cout << "you opened east side door.\n";
 	}
 	else
 	{
 		cout << "You can't move to the East." << endl;
 	}
 }
-bool Player::takeItem(int* rooms, bool items, int* itemInventory)
+bool Player::takeItem(int rooms, bool items, int itemInventory)
 {
 	if (items == true)
 	{
@@ -91,7 +99,7 @@ bool Player::takeItem(int* rooms, bool items, int* itemInventory)
 	}
 }
 
-void Player::useItem(int* rooms, int* itemInventory)
+void Player::useItem(int rooms, int itemInventory)
 {
 	// 
 }
@@ -102,4 +110,3 @@ void Player::instructions()
 		 << "The other actions you will be able to execute are take, inspect, use, and combine." << endl
 		 << "For example you can say 'take keys' to pick up keys." << endl;
 }
-*/

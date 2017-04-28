@@ -14,13 +14,14 @@ using namespace std;
 void gameStart() {
 	string userinput;
 	Player player;
-	bool gameover;
+	bool gameover = false;
 	string descrip1 = "You wake up in a mostly dark room. You don't know how you got here. All you can see is a flashlight on the floor shining against the wall.";
 	vector<Room> room(6);
 	room[0].description(descrip1);
-	
-
-	room[0].description(descrip1);
+	room[0].displayDescription();
+	room[0].doors(false, true, false, false);
+	room[1].description("room 2");
+	player.setVector(room);
 	while (gameover == false)
 	{
 		cin >> userinput;
