@@ -23,9 +23,9 @@ int main()
 {
 	string start;
 	cout<< "***********************************************************************************" << endl 
-		<< "Welcome to GAMENAME. In this game you will use"
+		<< "Welcome to the game. In this game you will use"
 		<< " text to navigate through the level." << endl 
-		<< "To move you will use the keys N, S, E, W to move a certain compass direction." << endl
+		<< "To move you will use the keys n, s, e, w to move a certain compass direction." << endl
 		<< "The other actions you will be able to execute are take, inspect, use, and combine." << endl
 	    << "***********************************************************************************" << endl;
 	cout << "Type start to begin." << endl;

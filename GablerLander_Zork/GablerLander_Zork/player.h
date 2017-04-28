@@ -7,8 +7,8 @@ using namespace std;
 class Player
 {
 public:
-	void userAction();
-	void userAction(string pUserInput);
+	void player();
+	void player(string pUserInput);
 private:
 	void north(int* rooms, bool moveNorth);
 	void south(int* rooms, bool moveSouth);

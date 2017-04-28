@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "player.h"
 
-void Player::userAction()
+void Player::player()
 {
 
 }
-void Player::userAction(string pUserInput)
+void Player::player(string pUserInput)
 {
 	string userInput = pUserInput;
 	if (userInput == "h" || userInput == "help" || userInput == "instructions")
@@ -95,5 +95,7 @@ void Player::useItem(int* rooms, int* itemInventory)
 
 void Player::instructions()
 {
-	// Display instructions
+	cout << "To move you will use the keys n, s, e, w to move a specific compass direction." << endl
+		 << "The other actions you will be able to execute are take, inspect, use, and combine." << endl
+		 << "For example you can say 'take keys' to pick up keys." << endl;
 }
