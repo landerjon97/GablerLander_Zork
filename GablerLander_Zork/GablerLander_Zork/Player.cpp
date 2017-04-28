@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "player.h"
 
+
+
 void Player::player()
 {
 
@@ -99,3 +101,4 @@ void Player::instructions()
 		 << "The other actions you will be able to execute are take, inspect, use, and combine." << endl
 		 << "For example you can say 'take keys' to pick up keys." << endl;
 }
+*/
