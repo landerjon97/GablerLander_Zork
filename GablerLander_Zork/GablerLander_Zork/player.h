@@ -2,6 +2,7 @@
 #define PLAYER_H
 #include "stdafx.h"
 #include "room.h"
+#include "item.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -21,7 +22,8 @@ private:
 	bool takeItem(int rooms, bool itemAvailable, int itemInventory);
 	void useItem(int rooms, int itemInventory);
 	void instructions();
+	Item item;
 	vector<Room> rooms;
-	char direction;
+	
 };
 #endif

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "player.h"
 #include "room.h"
+#include "item.h"
 #include <vector>
 
 
@@ -11,10 +12,10 @@ void Player::player()
 }
 void Player::setVector(vector<Room> room) {
 	rooms = room;
+	Item items;
 }
 void Player::player(string pUserInput)
 {
-
 	string userInput = pUserInput;
 	if (userInput == "h" || userInput == "help" || userInput == "instructions")
 	{
@@ -35,6 +36,19 @@ void Player::player(string pUserInput)
 	else if (userInput == "w" || userInput == "west" || userInput == "move west" || userInput == "move w")
 	{
 		west(rooms[currentRoom].testDoor('w'));
+	}
+	else if (userInput == "take flashlight") {
+		item.flashlightUp = true;
+		item.flashLight();
+	}
+	else if (userInput == "look around") {
+		if (currentRoom == 0 && item.flashlightUp == true) {
+			rooms[0].description("you can see more stuff.\n");
+			rooms[currentRoom].displayDescription();
+		}
+		else {
+			rooms[currentRoom].displayDescription();
+		}
 	}
 	else {
 		cout << "Please type 'help' if you are unsure what to do.\n";
