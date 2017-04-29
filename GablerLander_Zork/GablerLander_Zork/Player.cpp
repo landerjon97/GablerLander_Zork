@@ -13,8 +13,8 @@ void Player::setVector(vector<Room> room) {
 	rooms = room;
 }
 void Player::player(string pUserInput)
-{ 
-	
+{
+
 	string userInput = pUserInput;
 	if (userInput == "h" || userInput == "help" || userInput == "instructions")
 	{
@@ -46,7 +46,16 @@ void Player::north(bool moveNorth)
 {
 	if (moveNorth == true)
 	{
-		// Move to vector position of i-1
+		if (currentRoom == 1)
+		{
+			currentRoom = 4;
+		}
+		else
+		{
+			currentRoom = 3;
+		}
+		cout << "You opened north side door and pass through.\n";
+		rooms[currentRoom].displayDescription();
 	}
 	else
 	{
@@ -57,7 +66,16 @@ void Player::south(bool moveSouth)
 {
 	if (moveSouth == true)
 	{
-		//Move to vector position of i+1
+		if (currentRoom == 3)
+		{
+			currentRoom = 2;
+		}
+		else
+		{
+			currentRoom = 1;
+		}
+		cout << "You opened south side door and pass through.\n";
+		rooms[currentRoom].displayDescription();
 	}
 	else
 	{
@@ -68,7 +86,16 @@ void Player::west(bool moveWest)
 {
 	if (moveWest == true)
 	{
-		//Move to vector position j-1
+		if (currentRoom == 2)
+		{
+			currentRoom--;
+		}
+		else
+		{
+			currentRoom++;
+		}
+		cout << "You opened west side door and pass through.\n";
+		rooms[currentRoom].displayDescription();
 	}
 	else
 	{
@@ -79,7 +106,16 @@ void Player::east(bool moveEast)
 {
 	if (moveEast == true)
 	{
-		
+		if (currentRoom == 1 || currentRoom == 0)
+		{
+			currentRoom++;
+		}
+		else
+		{
+			currentRoom--;
+		}
+		cout << "You opened east side door and pass through.\n" << endl;
+		rooms[currentRoom].displayDescription();
 	}
 	else
 	{
@@ -107,6 +143,6 @@ void Player::useItem(int rooms, int itemInventory)
 void Player::instructions()
 {
 	cout << "To move you will use the keys n, s, e, w to move a specific compass direction." << endl
-		 << "The other actions you will be able to execute are take, inspect, use, and combine." << endl
-		 << "For example you can say 'take keys' to pick up keys." << endl;
+		<< "The other actions you will be able to execute are take, inspect, use, and combine." << endl
+		<< "For example you can say 'take keys' to pick up keys." << endl;
 }
