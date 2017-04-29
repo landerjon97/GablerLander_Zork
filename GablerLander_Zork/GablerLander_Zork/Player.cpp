@@ -14,7 +14,6 @@ void Player::setVector(vector<Room> room) {
 }
 void Player::player(string pUserInput)
 {
-
 	string userInput = pUserInput;
 	if (userInput == "h" || userInput == "help" || userInput == "instructions")
 	{
@@ -36,10 +35,10 @@ void Player::player(string pUserInput)
 	{
 		west(rooms[currentRoom].testDoor('w'));
 	}
-	else {
+	else 
+	{
 		cout << "Please type 'help' if you are unsure what to do.\n";
 	}
-
 }
 
 void Player::north(bool moveNorth)

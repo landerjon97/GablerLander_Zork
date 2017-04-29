@@ -35,7 +35,7 @@ void gameStart() {
 	player.currentRoom = 0;
 	while (gameover == false)
 	{
-		cin >> userinput;
+		getline(cin, userinput);
 		player.player(userinput);
 	}
 }
