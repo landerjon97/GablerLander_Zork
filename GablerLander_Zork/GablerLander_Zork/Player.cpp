@@ -22,19 +22,19 @@ void Player::player(string pUserInput)
 	}
 	else if (userInput == "n" || userInput == "north" || userInput == "move north" || userInput == "move n")
 	{
-		north(rooms[0].testDoor('n'));
+		north(rooms[currentRoom].testDoor('n'));
 	}
 	else if (userInput == "s" || userInput == "south" || userInput == "move south" || userInput == "move s")
 	{
-		south(rooms[0].testDoor('s'));
+		south(rooms[currentRoom].testDoor('s'));
 	}
 	else if (userInput == "e" || userInput == "east" || userInput == "move east" || userInput == "move e")
 	{
-		east(rooms[0].testDoor('e'));
+		east(rooms[currentRoom].testDoor('e'));
 	}
 	else if (userInput == "w" || userInput == "west" || userInput == "move west" || userInput == "move w")
 	{
-		west(rooms[0].testDoor('w'));
+		west(rooms[currentRoom].testDoor('w'));
 	}
 	else {
 		cout << "Please type 'help' if you are unsure what to do.\n";
@@ -79,7 +79,7 @@ void Player::east(bool moveEast)
 {
 	if (moveEast == true)
 	{
-		cout << "you opened east side door.\n";
+		
 	}
 	else
 	{
