@@ -17,6 +17,9 @@ public:
 	void displayDescription();
 	void doors(bool n, bool e, bool s, bool w);
 	bool testDoor(char pDirection);
+	int roomNumber;
+
+
 };
 
 

@@ -22,19 +22,19 @@ void Player::player(string pUserInput)
 	}
 	else if (userInput == "n" || userInput == "north" || userInput == "move north" || userInput == "move n")
 	{
-		north(rooms[0].testDoor('n'));
+		north(rooms[currentRoom].testDoor('n'));
 	}
 	else if (userInput == "s" || userInput == "south" || userInput == "move south" || userInput == "move s")
 	{
-		south(rooms[0].testDoor('s'));
+		south(rooms[currentRoom].testDoor('s'));
 	}
 	else if (userInput == "e" || userInput == "east" || userInput == "move east" || userInput == "move e")
 	{
-		east(rooms[0].testDoor('e'));
+		east(rooms[currentRoom].testDoor('e'));
 	}
 	else if (userInput == "w" || userInput == "west" || userInput == "move west" || userInput == "move w")
 	{
-		west(rooms[0].testDoor('w'));
+		west(rooms[currentRoom].testDoor('w'));
 	}
 	else {
 		cout << "Please type 'help' if you are unsure what to do.\n";
@@ -46,16 +46,7 @@ void Player::north(bool moveNorth)
 {
 	if (moveNorth == true)
 	{
-		if (currentroom == 1)
-		{
-			currentroom = 4;
-		}
-		else
-		{
-			currentroom = 3;
-		}
-		cout << "You opened north side door and pass through.\n";
-		rooms[currentroom].displayDescription;
+		// Move to vector position of i-1
 	}
 	else
 	{
@@ -66,16 +57,7 @@ void Player::south(bool moveSouth)
 {
 	if (moveSouth == true)
 	{
-		if (currentroom == 3)
-		{
-			currentroom = 2;
-		}
-		else
-		{
-			currentroom = 1;
-		}
-		cout << "You opened south side door and pass through.\n";
-		rooms[currentroom].displayDescription;
+		//Move to vector position of i+1
 	}
 	else
 	{
@@ -86,16 +68,7 @@ void Player::west(bool moveWest)
 {
 	if (moveWest == true)
 	{
-		if (currentroom == 2)
-		{
-			currentroom--;
-		}
-		else
-		{
-			currentroom++;
-		}
-		cout << "You opened west side door and pass through.\n";
-		rooms[currentroom].displayDescription;
+		//Move to vector position j-1
 	}
 	else
 	{
@@ -106,16 +79,7 @@ void Player::east(bool moveEast)
 {
 	if (moveEast == true)
 	{
-		if (currentroom == 1)
-		{
-			currentroom++;
-		}
-		else
-		{
-			currentroom--;
-		}
-		cout << "You opened east side door and pass through.\n" << endl;
-		rooms[currentroom].displayDescription;
+		
 	}
 	else
 	{

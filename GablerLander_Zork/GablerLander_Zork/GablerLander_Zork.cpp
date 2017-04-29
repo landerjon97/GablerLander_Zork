@@ -20,8 +20,19 @@ void gameStart() {
 	room[0].description(descrip1);
 	room[0].displayDescription();
 	room[0].doors(false, true, false, false);
-	room[1].description("room 2");
+	room[1].doors(true, true, false, false);
+	room[2].doors(true, false, true, false);
+	room[3].doors(false, false, true, true);
+	room[4].doors(false, true, true, true);
+	room[5].doors(false, false, false, false);
+	room[1].description("room 1");
+	room[2].description("room 2");
+	room[3].description("room 3");
+	room[4].description("room 4");
+	room[5].description("room 5");
+
 	player.setVector(room);
+	player.currentRoom = 0;
 	while (gameover == false)
 	{
 		cin >> userinput;

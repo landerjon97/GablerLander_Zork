@@ -12,6 +12,7 @@ public:
 	void player();
 	void player(string pUserInput);
 	void setVector(vector<Room> room);
+	int currentRoom;
 private:
 	void north(bool moveNorth);
 	void south(bool moveSouth);
