@@ -46,7 +46,16 @@ void Player::north(bool moveNorth)
 {
 	if (moveNorth == true)
 	{
-		// Move to vector position of i-1
+		if (currentroom == 1)
+		{
+			currentroom = 4;
+		}
+		else
+		{
+			currentroom = 3;
+		}
+		cout << "You opened north side door and pass through.\n";
+		rooms[currentroom].displayDescription;
 	}
 	else
 	{
@@ -57,7 +66,16 @@ void Player::south(bool moveSouth)
 {
 	if (moveSouth == true)
 	{
-		//Move to vector position of i+1
+		if (currentroom == 3)
+		{
+			currentroom = 2;
+		}
+		else
+		{
+			currentroom = 1;
+		}
+		cout << "You opened south side door and pass through.\n";
+		rooms[currentroom].displayDescription;
 	}
 	else
 	{
@@ -68,7 +86,16 @@ void Player::west(bool moveWest)
 {
 	if (moveWest == true)
 	{
-		//Move to vector position j-1
+		if (currentroom == 2)
+		{
+			currentroom--;
+		}
+		else
+		{
+			currentroom++;
+		}
+		cout << "You opened west side door and pass through.\n";
+		rooms[currentroom].displayDescription;
 	}
 	else
 	{
@@ -79,7 +106,16 @@ void Player::east(bool moveEast)
 {
 	if (moveEast == true)
 	{
-		cout << "you opened east side door.\n";
+		if (currentroom == 1)
+		{
+			currentroom++;
+		}
+		else
+		{
+			currentroom--;
+		}
+		cout << "You opened east side door and pass through.\n" << endl;
+		rooms[currentroom].displayDescription;
 	}
 	else
 	{
