@@ -3,6 +3,8 @@
 class Item {
 private:
 public:
+	bool flashlightUp = false;
+	bool keyUp;
 	Item();
 	void flashLight();
 	void note();

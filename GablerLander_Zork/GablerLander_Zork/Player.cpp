@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "player.h"
 #include "room.h"
+#include "item.h"
 #include <vector>
 
 
@@ -11,6 +12,7 @@ void Player::player()
 }
 void Player::setVector(vector<Room> room) {
 	rooms = room;
+	Item items;
 }
 void Player::player(string pUserInput)
 {
@@ -35,10 +37,23 @@ void Player::player(string pUserInput)
 	{
 		west(rooms[currentRoom].testDoor('w'));
 	}
-	else 
-	{
+	else if (userInput == "take flashlight") {
+		item.flashlightUp = true;
+		item.flashLight();
+	}
+	else if (userInput == "look around") {
+		if (currentRoom == 0 && item.flashlightUp == true) {
+			rooms[0].description("you can see more stuff.\n");
+			rooms[currentRoom].displayDescription();
+		}
+		else {
+			rooms[currentRoom].displayDescription();
+		}
+	}
+	else {
 		cout << "Please type 'help' if you are unsure what to do.\n";
 	}
+
 }
 
 void Player::north(bool moveNorth)

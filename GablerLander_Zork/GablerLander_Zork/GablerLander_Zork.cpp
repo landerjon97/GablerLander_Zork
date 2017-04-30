@@ -23,7 +23,7 @@ void gameStart() {
 	room[1].doors(true, true, false, false);
 	room[2].doors(true, false, true, false);
 	room[3].doors(false, false, true, true);
-	room[4].doors(false, true, true, true);
+	room[4].doors(false, true, true, false);
 	room[5].doors(false, false, false, false);
 	room[1].description("room 1");
 	room[2].description("room 2");
