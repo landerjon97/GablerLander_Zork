@@ -75,6 +75,18 @@ void Player::player(string pUserInput)
 			rooms[1].description("This room seems to be a bed room. There's a closet on the south side and a bed in the middle.\n Two doors one on east end and  one on north side.\n");
 			rooms[1].displayDescription();
 		}
+		else if (currentRoom == 2) {
+			rooms[2].description("");
+			rooms[2].displayDescription();
+		}
+		else if (currentRoom == 3) {
+			rooms[3].description("");
+			rooms[3].displayDescription();
+		}
+		else if (currentRoom == 4) {
+			rooms[4].description("");
+			rooms[4].displayDescription();
+		}
 		else {
 			rooms[currentRoom].displayDescription();
 		}
