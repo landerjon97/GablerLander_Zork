@@ -51,7 +51,7 @@ bool Room::testDoor(char pDirection) {
 		}
 	}
 	if (pDirection == 'w') {
-		if (south == true) {
+		if (west == true) {
 			return true;
 		}
 		else {
