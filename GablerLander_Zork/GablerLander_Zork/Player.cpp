@@ -21,6 +21,11 @@ void Player::player(string pUserInput)
 	{
 		instructions();
 	}
+	else if (currentRoom == 0 && item.keyUp == true && (userInput == "e" || userInput == "east" || userInput == "move east" || userInput == "move e")) {
+		cout << "The key that you used on the door breaks but you continue into the next room.\n";
+		item.keyUp = false;
+		east(rooms[currentRoom].testDoor('e'));
+	}
 	else if (userInput == "n" || userInput == "north" || userInput == "move north" || userInput == "move n")
 	{
 		north(rooms[currentRoom].testDoor('n'));
@@ -37,14 +42,32 @@ void Player::player(string pUserInput)
 	{
 		west(rooms[currentRoom].testDoor('w'));
 	}
-	else if (userInput == "take flashlight") {
+	else if (currentRoom == 0 && userInput == "take flashlight") {
 		item.flashlightUp = true;
 		item.flashLight();
 	}
+	else if (currentRoom == 0 && userInput == "inspect trash" && item.flashlightUp == true) {
+		cout << "The trash is empty.\n There's nothing to take.\n";
+	}
+	else if (currentRoom == 0 && userInput == "inspect desk" && item.flashlightUp == true) {
+		cout << "You found a key in the top left draw.\n Maybe this key could be used on the eastern door.\n";
+		item.takeKey = true;
+	}
+	else if (currentRoom == 0 && userInput == "take key" && item.flashlightUp == true && item.takeKey == true) {
+		rooms[0].doors(false, true, false, false);
+		item.keyUp = true;
+		item.key();
+	}
+
+
+	
 	else if (userInput == "look around") {
 		if (currentRoom == 0 && item.flashlightUp == true) {
-			rooms[0].description("you can see more stuff.\n");
+			rooms[0].description("The room is almost entirely empty, but you see a small desk against one of the walls as well as a trash can next to it.\n");
 			rooms[currentRoom].displayDescription();
+		}
+		else if (currentRoom == 1) {
+			rooms[1].description("stuff.\n")
 		}
 		else {
 			rooms[currentRoom].displayDescription();

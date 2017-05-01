@@ -4,8 +4,11 @@ class Item {
 private:
 public:
 	bool flashlightUp = false;
-	bool keyUp;
+	bool keyUp = false;
+	bool takeKey = false;
+	bool chestLock = true;
 	Item();
+	void chest();
 	void flashLight();
 	void note();
 	void key();

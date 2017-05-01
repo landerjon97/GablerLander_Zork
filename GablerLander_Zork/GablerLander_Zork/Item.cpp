@@ -13,9 +13,16 @@ void Item::flashLight() {
 }
 
 void Item::key() {
+	if (keyUp == true && flashlightUp == true) {
+		cout << "You picked up a key. \n";
+	}
+	else {
+		cout << "You can't see anything. \n";
+	}
+}
+void Item::chest() {
 
 }
-
 void Item::note()
 {
 
