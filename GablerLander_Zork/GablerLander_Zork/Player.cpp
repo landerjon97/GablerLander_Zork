@@ -158,5 +158,5 @@ void Player::instructions()
 {
 	cout << "To move you will use the keys n, s, e, w to move a specific compass direction." << endl
 		<< "The other actions you will be able to execute are take, inspect, use, and combine." << endl
-		<< "For example you can say 'take keys' to pick up keys." << endl;
+		<< "For example you can say 'take flashlight' to pick up the flashlight." << endl;
 }

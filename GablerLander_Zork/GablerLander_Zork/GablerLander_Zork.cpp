@@ -15,6 +15,7 @@ void gameStart() {
 	string userinput;
 	Player player;
 	bool gameover = false;
+	cout << "Tutorial Room" << endl;
 	string descrip1 = "You wake up in a mostly dark room. You don't know how you got here. All you can see is a flashlight on the floor shining against the wall.";
 	vector<Room> room(6);
 	room[0].description(descrip1);
