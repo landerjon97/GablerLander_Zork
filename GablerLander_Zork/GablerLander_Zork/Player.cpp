@@ -46,7 +46,7 @@ void Player::player(string pUserInput)
 		item.flashlightUp = true;
 		item.flashLight();
 	}
-	else if (currentRoom == 0 && userInput == "inspect trash" && item.flashlightUp == true) {
+	else if (currentRoom == 0 && (userInput == "inspect trash" || userInput == "inspect trash") && item.flashlightUp == true) {
 		cout << "The trash is empty.\n There's nothing to take.\n";
 	}
 	else if (currentRoom == 0 && userInput == "inspect desk" && item.flashlightUp == true) {
@@ -59,7 +59,12 @@ void Player::player(string pUserInput)
 		item.key();
 	}
 
-
+	else if (currentRoom == 1 && userInput == "inspect bed") {
+		cout << "The bed looks messy. Nothing worth taking.\n";
+	}
+	else if (currentRoom == 1 && userInput == "inspect closet") {
+		cout << "You find an oddly shaped chest with a note on top of it.\n";
+	}
 	
 	else if (userInput == "look around") {
 		if (currentRoom == 0 && item.flashlightUp == true) {
@@ -67,7 +72,8 @@ void Player::player(string pUserInput)
 			rooms[currentRoom].displayDescription();
 		}
 		else if (currentRoom == 1) {
-			rooms[1].description("stuff.\n")
+			rooms[1].description("This room seems to be a bed room. There's a closet on the south side and a bed in the middle.\n Two doors one on east end and  one on north side.\n");
+			rooms[1].displayDescription();
 		}
 		else {
 			rooms[currentRoom].displayDescription();
