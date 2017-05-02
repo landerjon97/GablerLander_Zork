@@ -86,7 +86,6 @@ void Player::player(string pUserInput)
 	else if (currentRoom == 1 && userInput == "inspect closet") {
 		cout << "You find a bunch of clothes in the closet. Nothing worth taking.\n";
 	}
-
 	else if (currentRoom == 2 && userInput == "inspect oven") {
 		cout << "The oven contains nothing.\n";
 	}
@@ -100,7 +99,7 @@ void Player::player(string pUserInput)
 		cout << "The cabinet contains lots of spicies. You see a red key on one of the shelves.\n";
 		item.takeRedKey = true;
 	}
-	else if (currentRoom == 2 && item.takeRedKey == true && userInput == "take key" || userInput == "take red key" ) {
+	else if (currentRoom == 2 && item.takeRedKey == true && userInput == "take key" || userInput == "take red key") {
 		cout << "You take the red key from the cabinet\n";
 		item.redKey = true;
 	}
@@ -110,7 +109,50 @@ void Player::player(string pUserInput)
 	else if (currentRoom == 2 && userInput == "inspect sink") {
 		cout << "The sink is filled with uncleaned dishes. Nothing worth taking.\n";
 	}
-	
+	else if (currentRoom == 3 && userInput == "inspect couch")
+	{
+		cout << "You inspect the couch and find a blue key under a cushion. You take the key.\n";
+		item.blueKey = true;
+	}
+	else if (currentRoom == 3 && userInput == "inspect cage")
+	{
+		if (item.boltcutters == true)
+		{
+			cout << "You use the boltcutter to cut the chain and open the cage. There is a box on the ground.\n";
+			item.inspectBox = true;
+		}
+		else
+		{
+			cout << "The cage is chained shut. Try finding something to open it.\n";
+		}
+	}
+	else if (currentRoom == 3 && userInput == "open box")
+	{
+		if (item.inspectBox == true)
+		{
+			cout << "You open the box and find a notecard. The notecard reads 'Digit: 2 Number: 2'\n";
+		}
+		else
+		{
+			cout << "You can't open the box because it is locked in the cage.\n";
+		}
+	}
+	else if (currentRoom == 4 && userInput == "inspect cabinet")
+	{
+		if (item.blueKey == true)
+		{
+			cout << "You use the blue key to unlock the cabinet. You find boltcutters and take them.\n";
+			item.boltcutters = true;
+		}
+		else
+		{
+			cout << "You try to open the cabinet and it is locked. The lock has a blue outline.\n";
+		}
+	}
+	else if (currentRoom == 4 && userInput == "inspect printer")
+	{
+		cout << "You inspect the printer and find a note scrawled on the inside. It reads 'Digit: 3 Number: 6'.\n";
+	}
 	else if (userInput == "look around") {
 		if (currentRoom == 0 && item.flashlightUp == true) {
 			rooms[0].description("The room is almost entirely empty, but you see a small desk against one of the walls as well as a trash can next to it.\n");
@@ -125,11 +167,11 @@ void Player::player(string pUserInput)
 			rooms[2].displayDescription();
 		}
 		else if (currentRoom == 3) {
-			rooms[3].description("");
+			rooms[3].description("You enter a room with a couch against one wall. There is also a cage that appears to be chained shut. There is a box inside the cage. There are doors to the south and west.");
 			rooms[3].displayDescription();
 		}
 		else if (currentRoom == 4) {
-			rooms[4].description("");
+			rooms[4].description("You enter a room with a large cabinet against a wall.  There is a printer laying next to the cabinet. There are doors to the east, south, and west.");
 			rooms[4].displayDescription();
 		}
 		else {
