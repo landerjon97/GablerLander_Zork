@@ -14,6 +14,7 @@ public:
 	void player(string pUserInput);
 	void setVector(vector<Room> room);
 	int currentRoom;
+	bool gameover = false;
 private:
 	void north(bool moveNorth);
 	void south(bool moveSouth);

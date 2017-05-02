@@ -13,12 +13,11 @@
 using namespace std;
 
 void gameStart() {
-	int tLeft = 240;
+	int tLeft = 10;
 	string userinput;
 	Player player;
-	bool gameover = false;
 	cout << "Tutorial Room" << endl;
-	string descrip1 = "You wake up in a mostly dark room. You don't know how you got here. All you can see is a flashlight on the floor shining against the wall. You can smell the faint scent of smoke.";
+	string descrip1 = "You wake up in a mostly dark room. You don't know how you got here. All you can see is a flashlight on the floor shining against the wall.";
 	vector<Room> room(6);
 	room[0].description(descrip1);
 	room[0].displayDescription();
@@ -28,34 +27,43 @@ void gameStart() {
 	room[3].doors(false, false, true, true);
 	room[4].doors(false, true, true, false);
 	room[5].doors(false, false, false, false);
-	room[1].description("room 1");
-	room[2].description("room 2");
-	room[3].description("room 3");
-	room[4].description("room 4");
-	room[5].description("room 5");
-
+	
+	player.gameover = false;
 	player.setVector(room);
 	player.currentRoom = 0;
-	clock_t c1;     //initializing a clock type
-
+	    //initializing a clock type
+	
 	  //end point of clock
 
+	clock_t c1;
+	c1 = 0;
 
-
-	while (gameover == false)
+	while (player.gameover == false)
 	{
 		c1 = clock();
-		tLeft -= c1 / (int)CLOCKS_PER_SEC;
-		if (tLeft >= 150) {
-			cout << "You smell a faint smell of smoke." << tLeft << " seconds" << endl;
+		if (tLeft - (c1 / (int)CLOCKS_PER_SEC) >= 150) {
+			cout << "You smell a faint smell of smoke. " <<  endl;
 		}
-		else if (tLeft < 150 && tLeft >= 100) {
-			cout<< "The room is getting hotter. The building is on fire. estimated time till building burns down: " << tLeft << " seconds" << endl;
+		else if (tLeft - (c1 / (int)CLOCKS_PER_SEC) < 150 && tLeft - (c1 / (int)CLOCKS_PER_SEC) >= 100) {
+			cout << "The room is getting hotter. The building is on fire. estimated time till building burns down: " << tLeft - (c1 / (int)CLOCKS_PER_SEC) << " seconds" << endl;
 		}
-		
+		else if (tLeft - (c1 / (int)CLOCKS_PER_SEC)  < 100 && tLeft - (c1 / (int)CLOCKS_PER_SEC) >= 60) {
+			cout << "The heat is starting to become overwhelming. estimated time till building burns down: " << tLeft - (c1 / (int)CLOCKS_PER_SEC) << " seconds" << endl;
+		}
+		else if (tLeft - (c1 / (int)CLOCKS_PER_SEC)  < 60 && tLeft - (c1 / (int)CLOCKS_PER_SEC) >= 10) {
+			cout << "The building is starting to splinter. You need to hurry. estimated time till building burns down: " << tLeft - (c1 / (int)CLOCKS_PER_SEC) << " seconds" << endl;
+		}
+		else if (tLeft - (c1 / (int)CLOCKS_PER_SEC)  < 10 && tLeft - (c1 / (int)CLOCKS_PER_SEC) >= 1) {
+			cout << "You're vision is fading to black. estimated time till building burns down: " << tLeft - (c1 / (int)CLOCKS_PER_SEC) << " seconds" << endl;
+		}
+		else if (tLeft - (c1 / (int)CLOCKS_PER_SEC)  < 1) {
+			cout << "You died\n";
+			player.gameover = true;
+			break;
+		}
+
 		getline(cin, userinput);
 		player.player(userinput);
-		
 	}
 }
 
@@ -67,13 +75,13 @@ int main()
 		<< "Welcome to our game. In this game you will use"
 		<< " text to navigate through different rooms with the goal to escape." << endl 
 		<< "You will use the keys n, s, e, w to move a certain compass direction." << endl
-		<< "The other actions you will be able to execute are take, inspect, use, and look around." << endl
+		<< "The other actions you will be able to execute are take, inspect, open, and look around to see description of room." << endl
 	    << "***********************************************************************************" << endl;
 	cout << "Type start to begin." << endl;
 	while (start != "start" || start != "exit") {
 		
 		try {
-			cin >> start;
+			getline(cin, start);
 			if (start == "start") {
 				gameStart();
 			}

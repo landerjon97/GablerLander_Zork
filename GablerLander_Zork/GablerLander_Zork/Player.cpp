@@ -53,14 +53,18 @@ void Player::player(string pUserInput)
 			if (userinput2 == "8265")
 			{
 				cout << "You enter the correct passcode and the door unlocks. You pass through the door and find yourself outside. Game over.\n";
-
+				gameover = true;
 			}
 			else 
 			{
 				cout << "You entered the wrong passcode.\n";
+				west(rooms[currentRoom].testDoor('w'));
 			}
 		}
-		west(rooms[currentRoom].testDoor('w'));
+		else {
+			west(rooms[currentRoom].testDoor('w'));
+		}
+		
 	}
 	else if (currentRoom == 0 && userInput == "take flashlight") 
 	{
@@ -73,7 +77,7 @@ void Player::player(string pUserInput)
 	}
 	else if (currentRoom == 0 && userInput == "inspect desk" && item.flashlightUp == true) 
 	{
-		cout << "You found a key in the top left draw.\n Maybe this key could be used on the eastern door.\n";
+		cout << "You found a key in the top left drawer.\n Maybe this key could be used on the eastern door.\n";
 		item.takeKey = true;
 	}
 	else if (currentRoom == 0 && userInput == "take key" && item.flashlightUp == true && item.takeKey == true) 
@@ -207,6 +211,9 @@ void Player::player(string pUserInput)
 			rooms[currentRoom].displayDescription();
 		}
 	}
+	else if(userInput == "start"){
+		cout << "test\n";
+	}
 	else 
 	{
 		cout << "Please type 'help' if you are unsure what to do.\n";
@@ -298,6 +305,6 @@ void Player::east(bool moveEast)
 void Player::instructions()
 {
 	cout << "To move you will use the keys n, s, e, w to move a specific compass direction." << endl
-		<< "The other actions you will be able to execute are take, inspect, open." << endl
+		<< "The other actions you will be able to execute are take, inspect, open, and look around to get desciption of the room." << endl
 		<< "For example you can say 'take flashlight' to pick up the flashlight." << endl;
 }
