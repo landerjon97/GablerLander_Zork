@@ -11,8 +11,8 @@ void Item::flashLight()
 {
 	if (flashlightUp == true) {
 		cout << "You picked up the flashlight and can see the contents of the room.\n" <<
-			"There is a desk against one wall with a trashcan next to it. On another wall you see a chalkboard with some writing on it.\n"
-			<< "There is a door to the east.";
+			"There is a desk against one wall with a trashcan next to it.\n"
+			<< "There is a door to the east.\n";
 	}
 }
 
@@ -35,7 +35,7 @@ void Item::note1()
 }
 void Item::note2()
 {
-
+	cout << "digit 4 number 5\n";
 }
 void Item::note3()
 {

@@ -6,7 +6,11 @@ public:
 	bool flashlightUp = false;
 	bool keyUp = false;
 	bool takeKey = false;
-	bool chestLock = true;
+	bool takeRedKey = false;
+	bool takeYellowKey = false;
+	bool yellowKey = false;
+	bool redKey = false;
+
 	Item();
 	void chest();
 	void flashLight();
@@ -23,6 +27,8 @@ public:
 	void cabinet();
 	void finaldoor();
 	void key();
+
+
 };
 
 #endif // !1
