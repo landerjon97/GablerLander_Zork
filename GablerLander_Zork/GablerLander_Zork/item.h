@@ -1,6 +1,8 @@
 #ifndef ITEM_H
 #define ITEM_H
-class Item {
+
+class Item 
+{
 private:
 public:
 	bool flashlightUp = false;
@@ -15,10 +17,8 @@ public:
 	bool boltcutters = false;
 	bool takeBoltcutters = false;
 	bool inspectBox = false;
-
 	Item();
 	void flashLight();
 	void key();
 };
-
-#endif // !1
+#endif

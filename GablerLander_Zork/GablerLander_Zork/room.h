@@ -3,7 +3,9 @@
 #include <string>
 
 using namespace std;
-class Room {
+
+class Room 
+{
 private:
 	string info;
 	bool north;
@@ -18,10 +20,6 @@ public:
 	void doors(bool n, bool e, bool s, bool w);
 	bool testDoor(char pDirection);
 	int roomNumber;
-
-
 };
-
-
 #endif
 

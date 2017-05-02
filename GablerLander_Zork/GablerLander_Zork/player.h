@@ -19,11 +19,8 @@ private:
 	void south(bool moveSouth);
 	void west(bool moveWest);
 	void east(bool moveEast);
-	bool takeItem(int rooms, bool itemAvailable, int itemInventory);
-	void useItem(int rooms, int itemInventory);
 	void instructions();
 	Item item;
 	vector<Room> rooms;
-	
 };
 #endif

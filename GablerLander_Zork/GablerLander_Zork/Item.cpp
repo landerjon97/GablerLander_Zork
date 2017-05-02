@@ -15,13 +15,14 @@ void Item::flashLight()
 			<< "There is a door to the east.\n";
 	}
 }
-
 void Item::key() 
 {
-	if (keyUp == true && flashlightUp == true) {
+	if (keyUp == true && flashlightUp == true) 
+	{
 		cout << "You picked up a key. \n";
 	}
-	else {
+	else 
+	{
 		cout << "You can't see anything. \n";
 	}
 }
