@@ -23,7 +23,7 @@
     <ProjectGuid>{A571D3CC-A05F-4A4E-A687-FA242B295415}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>GablerLander_Zork</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

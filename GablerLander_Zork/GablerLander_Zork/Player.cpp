@@ -47,7 +47,10 @@ void Player::player(string pUserInput)
 			cin >> userinput2;
 			if (userinput2 == "8265")
 			{
-				cout << "You enter the correct passcode and the door unlocks. You pass through the door and find yourself outside. Game over.";
+				cout << "You enter the correct passcode and the door unlocks. You pass through the door and find yourself outside. Game over.\n";
+			}
+			else {
+				cout << "You entered the wrong passcode.\n";
 			}
 		}
 		west(rooms[currentRoom].testDoor('w'));
@@ -70,10 +73,42 @@ void Player::player(string pUserInput)
 	}
 
 	else if (currentRoom == 1 && userInput == "inspect bed") {
-		cout << "The bed looks messy. Nothing worth taking.\n";
+		cout << "The bed looks messy. You find a box underneath the bed it. The outline of the keyhole is red.\n";
+	}
+	else if (currentRoom == 1 && userInput == "open box") {
+		if (item.redKey == true) {
+			cout << "You open the box with the red key and contains a note.\n The note reads: 'Digit: 1 Number: 8";
+		}
+		else {
+			cout << "You cannot open the box it requires a key.\n";
+		}
 	}
 	else if (currentRoom == 1 && userInput == "inspect closet") {
-		cout << "You find an oddly shaped chest with a note on top of it.\n";
+		cout << "You find a bunch of clothes in the closet. Nothing worth taking.\n";
+	}
+
+	else if (currentRoom == 2 && userInput == "inspect oven") {
+		cout << "The oven contains nothing.\n"
+	}
+	else if (currentRoom == 2 && userInput == "inspect sink") {
+		cout << "The sink is filled with uncleaned dishes. Nothing worth taking.\n";
+	}
+	else if (currentRoom == 2 && userInput == "inspect fridge") {
+		cout << "You find a bunch of yummy desserts and roasted chicken.\n Now is probably not a good time to eat.\n";
+	}
+	else if (currentRoom == 2 && userInput == "inspect cabinet") {
+		cout << "The cabinet contains lots of spicies. You see a red key on one of the shelves.\n";
+		item.takeRedKey = true;
+	}
+	else if (currentRoom == 2 && item.takeRedKey == true && userInput == "take key" || userInput == "take red key" ) {
+		cout << "You take the red key from the cabinet\n";
+		item.redKey = true;
+	}
+	else if (currentRoom == 2 && userInput == "inspect table") {
+		cout << "The table has huge scratch marks saying: 'Digit: 4 Number: 5'\n";
+	}
+	else if (currentRoom == 2 && userInput == "inspect sink") {
+		cout << "The sink is filled with uncleaned dishes. Nothing worth taking.\n";
 	}
 	
 	else if (userInput == "look around") {
@@ -82,11 +117,11 @@ void Player::player(string pUserInput)
 			rooms[currentRoom].displayDescription();
 		}
 		else if (currentRoom == 1) {
-			rooms[1].description("This room seems to be a bed room. There's a closet on the south side and a bed in the middle.\n Two doors one on east end and  one on north side.\n");
+			rooms[1].description("This room seems to be a bed room. There's a closet on the south side and a bed in the middle.\n Three doors one on east end and one on north side. The west door locked behind you.\n");
 			rooms[1].displayDescription();
 		}
 		else if (currentRoom == 2) {
-			rooms[2].description("");
+			rooms[2].description("This room looks like a kichen. There is an oven, a sink, a cabinet, a table, and a fridge.\n There are two doors, north and west\n");
 			rooms[2].displayDescription();
 		}
 		else if (currentRoom == 3) {
@@ -208,6 +243,6 @@ void Player::useItem(int rooms, int itemInventory)
 void Player::instructions()
 {
 	cout << "To move you will use the keys n, s, e, w to move a specific compass direction." << endl
-		<< "The other actions you will be able to execute are take, inspect, use, and combine." << endl
+		<< "The other actions you will be able to execute are take, inspect, open." << endl
 		<< "For example you can say 'take flashlight' to pick up the flashlight." << endl;
 }
