@@ -8,27 +8,17 @@ public:
 	bool takeKey = false;
 	bool takeRedKey = false;
 	bool takeYellowKey = false;
+	bool takeBlueKey = false;
 	bool yellowKey = false;
 	bool redKey = false;
+	bool blueKey = false;
+	bool boltcutters = false;
+	bool takeBoltcutters = false;
+	bool inspectBox = false;
 
 	Item();
-	void chest();
 	void flashLight();
-	void note1();
-	void note2();
-	void note3();
-	void note4();
-	void bed();
-	void box();
-	void briefcase();
-	void doll();
-	void crowbar();
-	void printer();
-	void cabinet();
-	void finaldoor();
 	void key();
-
-
 };
 
 #endif // !1
