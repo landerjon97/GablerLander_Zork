@@ -73,3 +73,7 @@ void Item::finaldoor()
 {
 
 }
+void Item::crowbar()
+{
+
+}

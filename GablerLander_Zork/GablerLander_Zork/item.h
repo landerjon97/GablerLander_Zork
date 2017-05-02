@@ -18,6 +18,7 @@ public:
 	void box();
 	void briefcase();
 	void doll();
+	void crowbar();
 	void printer();
 	void cabinet();
 	void finaldoor();

@@ -40,6 +40,16 @@ void Player::player(string pUserInput)
 	}
 	else if (userInput == "w" || userInput == "west" || userInput == "move west" || userInput == "move w")
 	{
+		if (currentRoom == 4)
+		{
+			cout << "This door requires a passcode. Enter it now." << endl;
+			string userinput2;
+			cin >> userinput2;
+			if (userinput2 == "8265")
+			{
+				cout << "You enter the correct passcode and the door unlocks. You pass through the door and find yourself outside. Game over.";
+			}
+		}
 		west(rooms[currentRoom].testDoor('w'));
 	}
 	else if (currentRoom == 0 && userInput == "take flashlight") {
