@@ -7,11 +7,13 @@
 #include "item.h"
 #include "player.h"
 #include <vector>
+#include "time.h"
 #include <string>
 
 using namespace std;
 
 void gameStart() {
+	int tLeft = 240;
 	string userinput;
 	Player player;
 	bool gameover = false;
@@ -34,11 +36,26 @@ void gameStart() {
 
 	player.setVector(room);
 	player.currentRoom = 0;
+	clock_t c1;     //initializing a clock type
+
+	  //end point of clock
+
+
 
 	while (gameover == false)
 	{
+		c1 = clock();
+		tLeft -= c1 / (int)CLOCKS_PER_SEC;
+		if (tLeft >= 150) {
+			cout << "You smell a faint smell of smoke." << tLeft << " seconds" << endl;
+		}
+		else if (tLeft < 150 && tLeft >= 100) {
+			cout<< "The room is getting hotter. The building is on fire. estimated time till building burns down: " << tLeft << " seconds" << endl;
+		}
+		
 		getline(cin, userinput);
 		player.player(userinput);
+		
 	}
 }
 

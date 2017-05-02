@@ -88,7 +88,7 @@ void Player::player(string pUserInput)
 	}
 
 	else if (currentRoom == 2 && userInput == "inspect oven") {
-		cout << "The oven contains nothing.\n"
+		cout << "The oven contains nothing.\n";
 	}
 	else if (currentRoom == 2 && userInput == "inspect sink") {
 		cout << "The sink is filled with uncleaned dishes. Nothing worth taking.\n";
