@@ -1,3 +1,13 @@
+/*
+Aurthor: John Gabler, Jonathan Lander
+Project: Text Based Adventure
+Date: 5/3/17
+*/
+
+/*
+NOTE: much of code repeates in certain way. I'm keeping commenting
+to a realistic level.
+*/
 #include "stdafx.h"
 #include "player.h"
 #include "room.h"
@@ -10,27 +20,35 @@ void Player::player()
 {
 
 }
+//grabs vector from the startgame method also constructs items
 void Player::setVector(vector<Room> room) {
 	rooms = room;
 	Item items;
 }
+//this method is where the game takes place.
+//may not be the best method to use but it made sense and we went with it.
 void Player::player(string pUserInput)
 {
 	string userInput = pUserInput;
+	//if the user inputs this then display instructions only commenting the special stuff.
 	if (userInput == "h" || userInput == "help" || userInput == "instructions")
 	{
 		instructions();
 	}
+	//we had to test a lot of things for the tutorial room.
 	else if (currentRoom == 0 && item.keyUp == true && (userInput == "e" || userInput == "east" || userInput == "move east" || userInput == "move e")) 
 	{
+		//user has to have key in order to break out
 		cout << "The key that you used on the door breaks but you continue into the next room.\n";
 		item.keyUp = false;
 		east(rooms[currentRoom].testDoor('e'));
 	}
+	//must make sure user has key before leaving tutor room
 	else if (currentRoom == 0 && item.keyUp == false && (userInput == "e" || userInput == "east" || userInput == "move east" || userInput == "move e")) 
 	{
 		cout << "This door requires a key to open.\n";
 	}
+	//these are the directions the user can go. and then it passes it into different methods.
 	else if (userInput == "n" || userInput == "north" || userInput == "move north" || userInput == "move n")
 	{
 		north(rooms[currentRoom].testDoor('n'));
@@ -45,6 +63,7 @@ void Player::player(string pUserInput)
 	}
 	else if (userInput == "w" || userInput == "west" || userInput == "move west" || userInput == "move w")
 	{
+		//requires user to enter a key inorder to get out.
 		if (currentRoom == 4)
 		{
 			cout << "This door requires a passcode. Enter it now." << endl;
@@ -66,11 +85,13 @@ void Player::player(string pUserInput)
 		}
 		
 	}
+	//taking of flashlight
 	else if (currentRoom == 0 && userInput == "take flashlight") 
 	{
 		item.flashlightUp = true;
 		item.flashLight();
 	}
+	//fundamental way of inspecting things.
 	else if (currentRoom == 0 && (userInput == "inspect trash" || userInput == "inspect trashcan") && item.flashlightUp == true) 
 	{
 		cout << "The trash is empty.\n There's nothing to take.\n";
@@ -80,6 +101,7 @@ void Player::player(string pUserInput)
 		cout << "You found a key in the top left drawer.\n Maybe this key could be used on the eastern door.\n";
 		item.takeKey = true;
 	}
+	//taking things.
 	else if (currentRoom == 0 && userInput == "take key" && item.flashlightUp == true && item.takeKey == true) 
 	{
 		rooms[0].doors(false, true, false, false);
@@ -90,8 +112,10 @@ void Player::player(string pUserInput)
 	{
 		cout << "The bed looks messy. You find a box underneath the bed it. The outline of the keyhole is red.\n";
 	}
+	//opening things.
 	else if (currentRoom == 1 && userInput == "open box") 
 	{
+		//have to have key inorder to do that...
 		if (item.redKey == true) 
 		{
 			cout << "You open the box with the red key and contains a note.\n The note reads: 'Digit: 1 Number: 8.\n";
@@ -179,6 +203,9 @@ void Player::player(string pUserInput)
 	{
 		cout << "You inspect the printer and find a note scrawled on the inside. It reads 'Digit: 3 Number: 6'.\n";
 	}
+
+	//look around just displays strings of the rooms.
+	//this is also where we assigned descriptions to everything.
 	else if (userInput == "look around") 
 	{
 		if (currentRoom == 0 && item.flashlightUp == true) 
@@ -208,18 +235,26 @@ void Player::player(string pUserInput)
 		}
 		else 
 		{
+			//somehow you mess the input up then it will do this
 			rooms[currentRoom].displayDescription();
 		}
 	}
-	else if(userInput == "start"){
-		cout << "test\n";
-	}
 	else 
 	{
+		//if all fails just display help 
 		cout << "Please type 'help' if you are unsure what to do.\n";
 	}
 
 }
+
+/*
+HOW WE WORKED LOCATION:
+since this isnt a 2d array we decided to have an int value
+that that changes based on room.
+it moves around much like a for loop would with i and j
+we also notified the user if he or she actually is able to move to the next
+room.
+*/
 
 void Player::north(bool moveNorth)
 {
@@ -301,7 +336,7 @@ void Player::east(bool moveEast)
 		cout << "You can't move to the East." << endl;
 	}
 }
-
+//just instruction method thats only used once but it works.
 void Player::instructions()
 {
 	cout << "To move you will use the keys n, s, e, w to move a specific compass direction." << endl

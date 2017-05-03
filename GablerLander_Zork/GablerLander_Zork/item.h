@@ -1,3 +1,8 @@
+/*
+Aurthor: John Gabler, Jonathan Lander
+Project: Text Based Adventure
+Date: 5/3/17
+*/
 #ifndef ITEM_H
 #define ITEM_H
 
@@ -5,6 +10,7 @@ class Item
 {
 private:
 public:
+	//many more bools than methods.
 	bool flashlightUp = false;
 	bool keyUp = false;
 	bool takeKey = false;

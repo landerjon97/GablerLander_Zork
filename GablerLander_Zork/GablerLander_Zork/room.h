@@ -1,9 +1,14 @@
+/*
+Aurthor: John Gabler, Jonathan Lander
+Project: Text Based Adventure
+Date: 5/3/17
+*/
 #ifndef ROOM_H
 #define ROOM_H
 #include <string>
 
 using namespace std;
-
+//nothing i didn't already explain.
 class Room 
 {
 private:

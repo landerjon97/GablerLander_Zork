@@ -1,6 +1,15 @@
-// GablerLander_Zork.cpp : Defines the entry point for the console application.
-//
+/*
+Aurthor: John Gabler, Jonathan Lander
+Project: Text Based Adventure
+Date: 5/3/17
+*/
 
+/*
+************************************************
+NOTE: MUST BE RAN ON VISUAL STUDIO 2017 NOT 2015
+************************************************
+*/
+//included libraries
 #include "stdafx.h"
 #include <iostream>
 #include "room.h"
@@ -13,12 +22,19 @@
 using namespace std;
 
 void gameStart() {
-	int tLeft = 10;
+	//using a timing variable called tLeft
+	int tLeft = 240;
+	//way to get user input
 	string userinput;
+	//contructing player class
 	Player player;
+	//introduction
 	cout << "Tutorial Room" << endl;
 	string descrip1 = "You wake up in a mostly dark room. You don't know how you got here. All you can see is a flashlight on the floor shining against the wall.";
+	//creating rooms with a vector
+	//NOTE: Not 2d but we simulate the 2d while playing. (technically its is a 3x2)
 	vector<Room> room(6);
+	//will be describing these in their classes
 	room[0].description(descrip1);
 	room[0].displayDescription();
 	room[0].doors(false, false, false, false);
@@ -27,20 +43,22 @@ void gameStart() {
 	room[3].doors(false, false, true, true);
 	room[4].doors(false, true, true, false);
 	room[5].doors(false, false, false, false);
-	
+	//set game over to false before it enters the loop 
 	player.gameover = false;
+	//passing the vector into the player.cpp
 	player.setVector(room);
+	//starting in the first room
 	player.currentRoom = 0;
-	    //initializing a clock type
-	
-	  //end point of clock
-
+	//creating the clock to test to see if user runs out of time
 	clock_t c1;
+	//setting clock to zero
 	c1 = 0;
-
+	//the main game loop
 	while (player.gameover == false)
 	{
+		///start the timer
 		c1 = clock();
+		//if time left - clock is greater than or equal to 150 seconds and so on.
 		if (tLeft - (c1 / (int)CLOCKS_PER_SEC) >= 150) {
 			cout << "You smell a faint smell of smoke. " <<  endl;
 		}
@@ -56,13 +74,17 @@ void gameStart() {
 		else if (tLeft - (c1 / (int)CLOCKS_PER_SEC)  < 10 && tLeft - (c1 / (int)CLOCKS_PER_SEC) >= 1) {
 			cout << "You're vision is fading to black. estimated time till building burns down: " << tLeft - (c1 / (int)CLOCKS_PER_SEC) << " seconds" << endl;
 		}
+
 		else if (tLeft - (c1 / (int)CLOCKS_PER_SEC)  < 1) {
+
 			cout << "You died\n";
 			player.gameover = true;
+			//break automatically closes the loop
 			break;
 		}
-
+		//getline read the entire line. this is the only way to get two word inputs.
 		getline(cin, userinput);
+		//passing user input into the player class where most of the work is done.
 		player.player(userinput);
 	}
 }
@@ -70,6 +92,8 @@ void gameStart() {
 
 int main()
 {
+	//this is the start screen. User must type start before actually playing the game. 
+	//firgured this is smarter to do than just having it all in one method.
 	string start;
 	cout<< "***********************************************************************************" << endl 
 		<< "Welcome to our game. In this game you will use"
@@ -78,6 +102,7 @@ int main()
 		<< "The other actions you will be able to execute are take, inspect, open, and look around to see description of room." << endl
 	    << "***********************************************************************************" << endl;
 	cout << "Type start to begin." << endl;
+	//stupid proofing the start screen.
 	while (start != "start" || start != "exit") {
 		
 		try {
