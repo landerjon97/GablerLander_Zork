@@ -23,7 +23,7 @@ using namespace std;
 
 void gameStart() {
 	//using a timing variable called tLeft
-	int tLeft = 240;
+	int tLeft = 480;
 	//way to get user input
 	string userinput;
 	//contructing player class
@@ -95,11 +95,12 @@ int main()
 	//this is the start screen. User must type start before actually playing the game. 
 	//firgured this is smarter to do than just having it all in one method.
 	string start;
-	cout<< "***********************************************************************************" << endl 
+	cout << "***********************************************************************************" << endl
 		<< "Welcome to our game. In this game you will use"
-		<< " text to navigate through different rooms with the goal to escape." << endl 
+		<< " text to navigate through different rooms with the goal to escape." << endl
 		<< "You will use the keys n, s, e, w to move a certain compass direction." << endl
 		<< "The other actions you will be able to execute are take, inspect, open, and look around to see description of room." << endl
+		<< "You also only have a set amount of time. You better hurry." << endl
 	    << "***********************************************************************************" << endl;
 	cout << "Type start to begin." << endl;
 	//stupid proofing the start screen.

@@ -20,6 +20,7 @@ public:
 	bool yellowKey = false;
 	bool redKey = false;
 	bool blueKey = false;
+	
 	bool boltcutters = false;
 	bool takeBoltcutters = false;
 	bool inspectBox = false;

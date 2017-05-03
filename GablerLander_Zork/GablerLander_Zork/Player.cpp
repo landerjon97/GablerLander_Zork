@@ -77,7 +77,6 @@ void Player::player(string pUserInput)
 			else 
 			{
 				cout << "You entered the wrong passcode.\n";
-				west(rooms[currentRoom].testDoor('w'));
 			}
 		}
 		else {
@@ -108,9 +107,11 @@ void Player::player(string pUserInput)
 		item.keyUp = true;
 		item.key();
 	}
+
+
 	else if (currentRoom == 1 && userInput == "inspect bed") 
 	{
-		cout << "The bed looks messy. You find a box underneath the bed it. The outline of the keyhole is red.\n";
+		cout << "The bed looks messy. You find a box underneath the bed. The outline of the box's keyhole is red.\n";
 	}
 	//opening things.
 	else if (currentRoom == 1 && userInput == "open box") 
@@ -129,6 +130,8 @@ void Player::player(string pUserInput)
 	{
 		cout << "You find a bunch of clothes in the closet. Nothing worth taking.\n";
 	}
+
+
 	else if (currentRoom == 2 && userInput == "inspect oven") 
 	{
 		cout << "The oven contains nothing.\n";
@@ -159,9 +162,15 @@ void Player::player(string pUserInput)
 	{
 		cout << "The sink is filled with uncleaned dishes. Nothing worth taking.\n";
 	}
+
+
 	else if (currentRoom == 3 && userInput == "inspect couch")
 	{
-		cout << "You inspect the couch and find a blue key under a cushion. You take the key.\n";
+		cout << "You inspect the couch and find a blue key under a cushion.\n";
+		item.takeBlueKey = true;
+	}
+	else if (currentRoom == 3 && item.takeBlueKey == true && userInput == "take key" || userInput =="take blue key") {
+		cout << "You took the blue key.\n";
 		item.blueKey = true;
 	}
 	else if (currentRoom == 3 && userInput == "inspect cage")
@@ -191,13 +200,17 @@ void Player::player(string pUserInput)
 	{
 		if (item.blueKey == true)
 		{
-			cout << "You use the blue key to unlock the cabinet. You find boltcutters and take them.\n";
-			item.boltcutters = true;
+			cout << "You use the blue key to unlock the cabinet. You see boltcutters.\n";
+			item.takeBoltcutters = true;
 		}
 		else
 		{
 			cout << "You try to open the cabinet and it is locked. The lock has a blue outline.\n";
 		}
+	}
+	else if (currentRoom == 4 && userInput == "take boltcutters") {
+		cout << "You took the bolt cutters.\n";
+		item.boltcutters = true;
 	}
 	else if (currentRoom == 4 && userInput == "inspect printer")
 	{
@@ -341,5 +354,6 @@ void Player::instructions()
 {
 	cout << "To move you will use the keys n, s, e, w to move a specific compass direction." << endl
 		<< "The other actions you will be able to execute are take, inspect, open, and look around to get desciption of the room." << endl
-		<< "For example you can say 'take flashlight' to pick up the flashlight." << endl;
+		<< "For example you can say 'take flashlight' to pick up the flashlight." << endl
+		<< "if a object is unable to be taken then it cannot be taken." <<endl;
 }
